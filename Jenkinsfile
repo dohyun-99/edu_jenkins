@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Global 변수 선언
         dockerRepo = "dodom2/edu_jenkins"
-        dockerCredentials = 'docker_ci'
+        dockerCredentials = 'docker_ci_test'
         dockerImageVersioned = ""
         dockerImageLatest = ""
     }
@@ -33,7 +33,7 @@ pipeline {
             steps{
                 script{
                     // if you want to use custom registry, use the first argument, which is blank in this case
-                    docker.withRegistry( '', dockerCredentials){
+                    docker.withRegistry( 'dodom2/edu_jenkins', dockerCredentials){
                         dockerImageVersioned.push()
                         dockerImageLatest.push()
                     }
